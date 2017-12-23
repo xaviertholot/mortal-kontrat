@@ -18,9 +18,10 @@
             v-bind:max="10"
             v-bind:min="1"
             v-model="character.attack"
-            :rules="pointsRules"
             thumb-label
             ticks
+            persistent-hint
+            :hint="+character.attack"
         />
         <v-slider
             label="Life points"
@@ -28,10 +29,12 @@
             v-bind:max="10"
             v-bind:min="1"
             v-model="character.lifepoints"
-            :rules="pointsRules"
             ticks
             thumb-label
+            persistent-hint
+            :hint="+character.lifepoints"
         />
+        <p v-if="!validPoints">You can affect only 10 points maximum</p>
         <v-btn
             color="primary"
             @click="submit"
@@ -42,7 +45,6 @@
 
 <script>
 const MAX_POINTS = 10;
-const max_points_msg = 'You can affect only 10 points maximum'
 const EDIT_PREFIX = 'Edit';
 const CREATE_PREFIX = 'Create';
 
@@ -50,6 +52,7 @@ export default {
     data () {
         return {
             valid: false,
+            validPoints: true,
             nameRules: [
                 (v) => !!v || 'Name is required'
             ],
@@ -57,20 +60,19 @@ export default {
                 (v) => !!v || 'A picture URL is required',
                 (v) => /^((http|ftp|https):\/\/)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/.test(v) || 'The URL must be valid'
             ],
-            pointsRules: [
-                (v) => {
-                    console.log('validatePoints')
-                    return this.character.attack + this.character.lifepoints <= MAX_POINTS || max_points_msg
-                }
-            ],
             buttonPrefix: this.context === 'creation' ? CREATE_PREFIX : EDIT_PREFIX
         };
     },
     methods: {
         submit(event) {
-            if (this.$refs.form.validate()) {
+            if (this.$refs.form.validate() && this.validatePoint()) {
                 this.$root.$emit('character-submitted', this.character);
             }
+        },
+        validatePoint() {
+            const valid = this.character.attack + this.character.lifepoints <= MAX_POINTS
+            this.validPoints = valid
+            return valid;
         }
     },
     props: {

@@ -4,7 +4,8 @@
             {{resultLabel}}
         </h3>
         <div class="mb-1">
-            +{{characterFight.delta_experience || 0}} XP
+            {{characterFight.delta_experience > 0 ? '+' : ''}}
+            {{characterFight.delta_experience || 0}} XP
         </div>
         <Character :character="characterFight.character"/>
     </div>

@@ -1,15 +1,13 @@
 <template>
-    <div id="app">
-      <v-app dark>
+    <v-app dark>
         <Toolbar />
         <main>
             <transition name="slide">
-                <router-view />
+                <router-view></router-view>
             </transition>
         </main>
         <Footer />
-      </v-app>
-   </div>
+    </v-app>
 </template>
 
 <script>
@@ -19,7 +17,6 @@ import Footer from './components/footer.vue';
 export default {
   data: function () {
     return {
-      title: "Hello Vue!"
     }
   },
   components: {
@@ -34,4 +31,5 @@ p {
   font-size: 2em;
   text-align: center;
 }
+
 </style>

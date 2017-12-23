@@ -17,6 +17,9 @@ class FightsController < ApplicationController
     @fight = Fight.battle(fight_params)
 
     if @fight.save
+      @fight.character_fights.each do |character_fight|
+        character_fight.change_exp
+      end
       render template: 'fights/show', status: :created, location: @fight
     else
       render json: @fight.errors, status: :unprocessable_entity
