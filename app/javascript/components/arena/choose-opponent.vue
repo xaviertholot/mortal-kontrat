@@ -7,12 +7,15 @@
                 </h1>
             </v-flex>
         </v-layout>
-        <CharacterList :fighterId="fighter" context="opponent"/>
+        <CharacterList
+            :fighterId="fighter"
+            :actions="actions"
+        />
     </v-container>
 </template>
 
 <script>
-import CharacterList from './character-list.vue'
+import CharacterList from '../character/character-list.vue'
 
 export default {
     components: {
@@ -20,10 +23,25 @@ export default {
     },
     data() {
         return {
-            fighter: this.$route.params.fighter
+            fighter: this.$route.params.fighter,
+            actions: [
+                {
+                    left: true,
+                    bottom: true,
+                    color: 'green',
+                    onClick: this.fight,
+                    icon: 'check'
+                }
+            ]
         }
     },
     methods: {
+        fight(characterId) {
+            const fightResource = this.$resource('fights{/id}')
+            fightResource.save({}, {fight: {fighter_id: this.fighter, opponent_id: characterId}}).then(response => {
+                this.$router.push({ name: 'fight', params: {id: response.body.id} })
+            })
+        }
     }
 }
 </script>

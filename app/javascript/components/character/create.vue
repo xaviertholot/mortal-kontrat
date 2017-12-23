@@ -5,14 +5,14 @@
                 <h1 class="white--text mb-2 display-1 text-xs-center">
                     Create a Lawyer
                 </h1>
-                <Character context="creation"/>
+                <Form context="creation"/>
             </v-flex>
         </v-layout>
     </v-container>
 </template>
 
 <script>
-import Character from './main.vue';
+import Form from './form.vue';
 
 export default {
     created() {
@@ -28,7 +28,7 @@ export default {
         this.$root.$off('character-submitted')
     },
     components: {
-        Character
+        Form
     },
     methods: {
     }

@@ -1,6 +1,6 @@
 import VueRouter from 'vue-router';
 import Home from '../components/home/main.vue';
-import Arena from '../components/arena/main.vue';
+import Arena from '../components/arena/choose-fighter.vue';
 import CharacterCreate from '../components/character/create.vue';
 import CharacterEdit from '../components/character/edit.vue';
 import ChooseOpponent from '../components/arena/choose-opponent.vue';

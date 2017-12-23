@@ -80,12 +80,12 @@ export default {
         },
         character: {
             type: Object,
-            default: {
+            default: () => ({
                 name: '',
                 picture: '',
                 attack: 5,
                 lifepoints: 5
-            }
+            })
         }
     }
 }

@@ -5,14 +5,14 @@
                 <h1 class="white--text mb-2 display-1 text-xs-center">
                     Edit a Lawyer
                 </h1>
-                <Character v-if="character" context="edition" :character="character"/>
+                <Form v-if="character" context="edition" :character="character"/>
             </v-flex>
         </v-layout>
     </v-container>
 </template>
 
 <script>
-import Character from './main.vue';
+import Form from './form.vue';
 
 export default {
     data() {
@@ -37,7 +37,7 @@ export default {
         this.$root.$off('character-submitted')
     },
     components: {
-        Character
+        Form
     },
     methods: {
     }

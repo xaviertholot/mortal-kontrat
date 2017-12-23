@@ -1,7 +1,7 @@
 <template>
     <v-layout row wrap class="mb-5">
         <v-flex md4 xs12 sm6 v-for="character in characters">
-            <Character :character="character" :context="context"/>
+            <Character :character="character" :actions="actions"/>
         </v-flex>
     </v-layout>
 </template>
@@ -31,9 +31,9 @@ export default {
             type: Number,
             default: null
         },
-        context: {
-            type: String,
-            default: 'fighter'
+        actions: {
+            type: Array,
+            default: () => []
         }
     }
 }
