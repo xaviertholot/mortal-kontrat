@@ -4,4 +4,10 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+nb_characters = 10
+10.times do
+    lifepoints = Faker::Number.between(1, 10)
+    attack = 10 - lifepoints
+    Character.create(name: Faker::Name.name, picture: Faker::Avatar.image, lifepoints: lifepoints, attack: attack)
+end
