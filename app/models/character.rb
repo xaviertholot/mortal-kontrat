@@ -12,6 +12,10 @@ class Character < ApplicationRecord
       self.experience ||= 0
     end
 
+    def get_lifepoints
+        lifepoints * 100 + (experience || 0)
+    end
+
     MAX_TOTAL_POINTS = 10
     def validate_points_total
         if lifepoints && attack

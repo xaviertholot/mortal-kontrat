@@ -29,17 +29,19 @@ export default {
                     left: true,
                     bottom: true,
                     color: 'green',
-                    onClick: this.fight,
+                    onClick: this.chooseOpponent,
                     icon: 'check'
                 }
             ]
         }
     },
     methods: {
-        fight(characterId) {
-            const fightResource = this.$resource('fights{/id}')
-            fightResource.save({}, {fight: {fighter_id: this.fighter, opponent_id: characterId}}).then(response => {
-                this.$router.push({ name: 'fight', params: {id: response.body.id} })
+        chooseOpponent(opponentId) {
+            const routeParams = this.$route.params
+            const fighterId = routeParams.fighter
+            const fighterWeaponId = routeParams['fighterWeapon']
+            this.$router.push({ name: 'choose-opponent-weapon', params:
+                {fighter: fighterId, 'fighterWeapon': fighterWeaponId, opponent: opponentId}
             })
         }
     }

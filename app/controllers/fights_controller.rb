@@ -34,6 +34,6 @@ class FightsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def fight_params
-      params.require(:fight).permit(:fighter_id, :opponent_id)
+      params.require(:fight).permit(character_fights: [character: [:id], weapon: [:id]])
     end
 end

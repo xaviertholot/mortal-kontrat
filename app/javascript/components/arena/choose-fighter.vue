@@ -50,7 +50,7 @@ export default {
     },
     methods: {
         chooseFighter(characterId) {
-            this.$router.push({ name: 'choose-opponent', params: {fighter: characterId} })
+            this.$router.push({ name: 'choose-fighter-weapon', params: {fighter: characterId} })
         },
         editFighter(characterId) {
             this.$router.push({ name: 'character-edit', params: {id: characterId} })

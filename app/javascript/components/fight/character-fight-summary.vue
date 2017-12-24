@@ -8,11 +8,16 @@
             {{characterFight.delta_experience || 0}} XP
         </div>
         <Character :character="characterFight.character"/>
+        <h3 class="headline mb-2">
+            Weapon Used
+        </h3>
+        <Weapon :weapon="characterFight.weapon"/>
     </div>
 </template>
 
 <script>
 import Character from '../character/character.vue';
+import Weapon from '../weapon/weapon.vue';
 
 const WIN_LABEL = 'WINNER !';
 const LOOSE_LABEL = 'LOOSER !';
@@ -35,7 +40,8 @@ export default {
         }
     },
     components: {
-        Character
+        Character,
+        Weapon
     },
     methods: {
     },

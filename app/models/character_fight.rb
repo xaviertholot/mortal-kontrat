@@ -1,6 +1,7 @@
 class CharacterFight < ApplicationRecord
   belongs_to :character
   belongs_to :fight
+  belongs_to :weapon
 
   enum result: { draw: 0, win: 1 , loose: 2}
 
