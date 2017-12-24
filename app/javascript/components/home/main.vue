@@ -30,59 +30,53 @@
           class="my-5"
           align-center
         >
-          <v-flex xs12 sm4 class="my-3">
-            <div class="text-xs-center">
-              <h2 class="headline">Fight against real lawyers</h2>
-              <span class="subheading">
-                Not for justice, just for fun
-              </span>
-            </div>
-          </v-flex>
-          <v-flex xs12>
-            <v-container grid-list-xl>
-              <v-layout row wrap align-center>
-                <v-flex xs12 md4>
-                  <v-card class="elevation-0 transparent">
-                    <v-card-text class="text-xs-center">
-                      <v-icon x-large class="blue--text text--lighten-2">color_lens</v-icon>
-                    </v-card-text>
-                    <v-card-title primary-title class="layout justify-center">
-                      <div class="headline text-xs-center">Create and customize your lawyer</div>
-                    </v-card-title>
-                    <v-card-text>
-                      Create the lawyer you've always dreamed of. Name him, and give a picture to him, you'll be all set !
-                    </v-card-text>
-                  </v-card>
-                </v-flex>
-                <v-flex xs12 md4>
-                  <v-card class="elevation-0 transparent">
-                    <v-card-text class="text-xs-center">
-                      <v-icon x-large class="blue--text text--lighten-2">flash_on</v-icon>
-                    </v-card-text>
-                    <v-card-title primary-title class="layout justify-center">
-                      <div class="headline">Fight !</div>
-                    </v-card-title>
-                    <v-card-text>
-                      Fight against another lawyer
-                    </v-card-text>
-                  </v-card>
-                </v-flex>
-                <v-flex xs12 md4>
-                  <v-card class="elevation-0 transparent">
-                    <v-card-text class="text-xs-center">
-                      <v-icon x-large class="blue--text text--lighten-2">build</v-icon>
-                    </v-card-text>
-                    <v-card-title primary-title class="layout justify-center">
-                      <div class="headline text-xs-center">Become the best</div>
-                    </v-card-title>
-                    <v-card-text>
-                      Make your lawyer gain experience ! The more your lawyer will gain experience, the strongest he will become.
-                    </v-card-text>
-                  </v-card>
-                </v-flex>
-              </v-layout>
-            </v-container>
-          </v-flex>
+          <div class="text-xs-center">
+            <h2 class="headline">Fight against real lawyers</h2>
+            <span class="subheading">
+              Not for justice, just for fun
+            </span>
+          </div>
+          <v-layout row wrap align-center>
+            <v-flex xs12 md4>
+              <v-card class="elevation-0 transparent">
+                <v-card-text class="text-xs-center">
+                  <v-icon x-large class="blue--text text--lighten-2">color_lens</v-icon>
+                </v-card-text>
+                <v-card-title primary-title class="layout justify-center">
+                  <div class="headline text-xs-center">Create and customize your lawyer</div>
+                </v-card-title>
+                <v-card-text>
+                  Create the lawyer you've always dreamed of. Name him, and give a picture to him, you'll be all set !
+                </v-card-text>
+              </v-card>
+            </v-flex>
+            <v-flex xs12 md4>
+              <v-card class="elevation-0 transparent">
+                <v-card-text class="text-xs-center">
+                  <v-icon x-large class="blue--text text--lighten-2">flash_on</v-icon>
+                </v-card-text>
+                <v-card-title primary-title class="layout justify-center">
+                  <div class="headline">Fight !</div>
+                </v-card-title>
+                <v-card-text>
+                  Fight against another lawyer
+                </v-card-text>
+              </v-card>
+            </v-flex>
+            <v-flex xs12 md4>
+              <v-card class="elevation-0 transparent">
+                <v-card-text class="text-xs-center">
+                  <v-icon x-large class="blue--text text--lighten-2">build</v-icon>
+                </v-card-text>
+                <v-card-title primary-title class="layout justify-center">
+                  <div class="headline text-xs-center">Become the best</div>
+                </v-card-title>
+                <v-card-text>
+                  Make your lawyer gain experience ! The more your lawyer will gain experience, the strongest he will become.
+                </v-card-text>
+              </v-card>
+            </v-flex>
+          </v-layout>
         </v-layout>
       </section>
     </v-content>
