@@ -5,12 +5,8 @@ class Fight < ApplicationRecord
     def self.battle(fight_params)
         character_fight_fighter = fight_params[:character_fights][0]
         character_fight_opponent = fight_params[:character_fights][1]
-        fighter = Character.find(character_fight_fighter[:character][:id])
-        opponent = Character.find(character_fight_opponent[:character][:id])
-        fighterWeapon = Weapon.find(character_fight_fighter[:weapon][:id])
-        opponentWeapon = Weapon.find(character_fight_opponent[:weapon][:id])
 
-        fight_reports = simulate_fight(fighter, opponent, fighterWeapon, opponentWeapon)
+        fight_reports = simulate_fight(character_fight_fighter, character_fight_opponent)
 
         Fight.new(character_fights: fight_reports)
     end
@@ -35,27 +31,28 @@ class Fight < ApplicationRecord
         end
     end
 
-    def self.simulate_fight(fighter, opponent, fighterWeapon, opponentWeapon)
+    def self.simulate_fight(character_fight_fighter, character_fight_opponent)
+        fighter = Character.find(character_fight_fighter[:character][:id])
+        opponent = Character.find(character_fight_opponent[:character][:id])
+        fighterWeapon = Weapon.find(character_fight_fighter[:weapon][:id])
+        opponentWeapon = Weapon.find(character_fight_opponent[:weapon][:id])
+
         fighterLifepoints = fighter.get_lifepoints
         opponentLifepoints = opponent.get_lifepoints
-        while (opponentLifepoints > 0 and fighterLifepoints > 0)
-            # Fight N rounds until someone die !
-            fighterLifepoints -= (opponent.attack + opponentWeapon.force)
-            opponentLifepoints -= (fighter.attack + fighterWeapon.force)
-        end
-        fighterDead = fighterLifepoints <= 0
-        opponentDead = opponentLifepoints <= 0
-        if (fighterDead and opponentDead)
+        # Fight N rounds until someone die !
+        fighterRounds = fighterLifepoints / (opponent.attack + opponentWeapon.force)
+        opponentRounds = opponentLifepoints / (fighter.attack + fighterWeapon.force)
+        if (fighterRounds == opponentRounds)
             # draw
             fighterResult = 'draw'
             opponentResult = 'draw'
-        elsif (fighterDead)
+        elsif (fighterRounds > opponentRounds)
             # fighter win
             fighterResult = 'win'
             opponentResult = 'loose'
             deltaExperienceFighter = calculate_delta_experience_winner(fighter, opponent)
             deltaExperienceOpponent = calculate_delta_experience_looser(fighter, opponent)
-        elsif (opponentDead)
+        elsif (opponentRounds > fighterRounds)
             # opponent win
             fighterResult = 'loose'
             opponentResult = 'win'

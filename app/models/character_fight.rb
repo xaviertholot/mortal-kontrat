@@ -6,6 +6,10 @@ class CharacterFight < ApplicationRecord
   enum result: { draw: 0, win: 1 , loose: 2}
 
   def change_exp
-    character.update(experience: (delta_experience || 0) + (character.experience || 0))
+    newExperience = (delta_experience || 0) + (character.experience || 0)
+    if (newExperience < 0)
+        newExperience = 0
+    end
+    character.update(experience: newExperience)
   end
 end

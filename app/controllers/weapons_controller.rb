@@ -48,6 +48,6 @@ class WeaponsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def weapon_params
-      params.require(:weapon).permit(:name, :force)
+      params.require(:weapon).permit(:name, :force, :picture)
     end
 end
