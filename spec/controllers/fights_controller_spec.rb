@@ -59,7 +59,6 @@ RSpec.describe FightsController, type: :controller do
   describe "POST #create" do
     context "with valid params" do
       it "creates a new Fight" do
-        puts valid_battle_attributes
         expect {
           post :create, params: {fight: valid_battle_attributes}, session: valid_session, :format => :json
         }.to change(Fight, :count).by(1)

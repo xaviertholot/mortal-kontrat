@@ -36,8 +36,8 @@ RSpec.describe Fight, type: :model do
           fight.character_fights.each do |character_fight|
             character_fight.change_exp
           end
-          fighterReport.character.experience = 10
-          opponentReport.character.experience = 0
+          expect(fighterReport.character.experience).to eq(10)
+          expect(opponentReport.character.experience).to eq(-0)
         end
       end
       context "with two experimented characters" do
